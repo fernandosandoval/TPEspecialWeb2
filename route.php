@@ -4,9 +4,8 @@
   define('VALOR2', 2);
 
   include_once 'config/ConfigApp.php';
-  include_once 'index.html';
   include_once 'items.php';
-  include_once 'juegos.php';
+  include_once 'index.php';
 
 
   function parseURL($url){
@@ -29,23 +28,7 @@
               else{
                 echo $metodo();
               }
-          // echo 'Existe la accion '. $action;
-          // echo ' y tengo que llamar al metodo '.ConfigApp::$ACTIONS[$action];
-          // echo ' y los parametros son: ';
-          // print_r ($params);
 
         }
-        //
-        // if ($actions[ACTION] === 'sumar'){
-        //     echo sumar($actions[VALOR1],$actions[VALOR2]);
-        //   }
-        // if ($actions[0] === 'about'){
-        //   if (isset($actions[VALOR1])){
-        //     echo about($actions[VALOR1]);
-        //   }
-        //   else {
-        //     echo about();
-        //   }
-        // }
-  }
+    }
 ?>
