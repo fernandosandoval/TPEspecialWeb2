@@ -1,12 +1,5 @@
-
 {include file="templates/header.tpl"}
-      <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-          <h1>Lista de Juegos </h1>
-          <div id="items">
-
-          </div>
-
-        </div>
-      </div>
+<div id="partialRenderContainer">
+    {include file="templates/carousel.tpl"}
+</div>
 {include file="templates/footer.tpl"}

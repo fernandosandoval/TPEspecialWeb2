@@ -1,3 +1,5 @@
+<script src="js/nav.js" charset="utf-8"></script>
+
 <!DOCTYPE html>
       <html lang="en">
         <head>
@@ -7,12 +9,6 @@
           <title>{{$titulo}}</title>
             <link rel="stylesheet" type="text/css" href="css/estilo.css">
             <link href="css/bootstrap.min.css" rel="stylesheet">
-
-
-          <!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-          <![endif]-->
         </head>
 
         <body>
@@ -31,15 +27,18 @@
                  <span class="icon-bar"></span>
                  <span class="icon-bar"></span>
               </button>
-             <a class="navbar-brand" href="#">Juegos y Consolas</a>
+             <a class="navbar-brand" href="home">Juegos y Consolas</a>
           </div> <!-- navbar-header-->
           <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="container-navbar">
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                  <ul class="nav navbar-nav">
-                     <li id="home"><a href="#">Home</a></li>
-                     <li id="juegos"><a href="juegos">Juegos</a></li>
-                     <li><a href="#contacto">Contacto</a></li>
+                     <li id="home"><a href="home">Home</a></li>
+                     <li id="items"><a href="items">Lista de Juegos</a></li>
+                     <li id="usuarios"><a href="usuarios">Lista de Vendedores</a></li>
+                     <li id="agregarI"><a href="guardarItem">Agregar Juego</a></li>
+                     <li id="agregarU"><a href="guardarUsuario">Agregar Vendedor</a></li>
+                     <li id="salir"><a href="logout">Salir</a></li>
                     </ul>
                    </div><!-- /.navbar-collapse -->
                   </div> <!-- /container navbar -->

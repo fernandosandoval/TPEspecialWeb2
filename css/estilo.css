@@ -38,6 +38,10 @@ li a:hover {
     background-color: #111;
 }
 
+titulo-tabla{
+  color: : yellow;
+}
+
 .consola{
   float: left;
   width: 40%;

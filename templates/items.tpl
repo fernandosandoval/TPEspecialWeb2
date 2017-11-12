@@ -1,20 +1,26 @@
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>Juego</th>
-      <th>Precio</th>
-      <th>Vendedor</th>
-    </tr>
-  </thead>
-  <tbody>
-    {foreach from=$items item=item} {
-      {$nombreUsuario = getNombreUsuario($item['fk_id_usuario'])}
-      echo '<tr>';
-      echo '<td>'.{$item['nombre']}.'</td>';
-      echo '<td>'.{$item['precio']}.'</td>';
-      echo '<td>'.{$nombreUsuario}.'</td>';
-      echo '</tr>';
-    {/foreach}
-?>
-  </tbody>
-</table>
+{include file="header.tpl"}
+      <div class="titulo-tabla">
+      <h2>Lista de Juegos Ofrecidos</h2>
+      <p>En caso de estar interesado en un item, por favor contactese con el vendedor que publico el aviso</p>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Precio</th>
+              <th>Vendedor</th>
+            </tr>
+          </thead>
+          <tbody>
+            {foreach from=$items item=item}
+              <tr>
+                <td>{$item['nombre']}</td>
+                <td>{$item['precio']}</td>
+                <td>{$item['fk_id_vendedor']}</td>
+                <td><a href="detalleItem/{$item['id_item']}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a></td>
+                <td><a href="borrarItem/{$item['id_item']}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+              </tr>
+            {/foreach}
+          </tbody>
+        </table>
+      </div> <!-- <div class="titulo-tabla" -->
+{include file="footer.tpl"}
