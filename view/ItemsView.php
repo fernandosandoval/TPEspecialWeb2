@@ -35,6 +35,11 @@ class ItemsView extends View
     $this->smarty->display('templates/formCrearItem.tpl');
   }
 
+  function modificarItems(){
+    $this->assignarItemForm();
+    $this->smarty->display('templates/formModificarItem.tpl');
+  }
+
   function errorCrear($error, $nombre, $genero, $precio, $descripcion, $vendedor){
     $this->assignarItemForm($nombre, $genero, $precio, $descripcion, $vendedor);
     $this->smarty->assign('error', $error);

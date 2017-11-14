@@ -1,12 +1,17 @@
 $(document).ready(function(){
 
-  //  $.ajax({
-  //      url: "http://localhost/2017/TPE/usuarios",
-  //      success: function(result){
-  //       //  for (var i = 0; i < 1000000000; i++) {
-  //       //  }
-  //        $("#usuarios").html(result);
-  //      }
-  //  });
+  $(document).on('click','a.partial', function(e){
+    e.preventDefault();
+
+    $.ajax({
+        url: $(this).attr('href'),
+        type: 'GET',
+        success: function(result){
+          $("#partialRenderContainer").html(result);
+        }
+    });
+
+  });
+
 
  });

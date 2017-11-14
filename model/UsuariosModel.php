@@ -18,6 +18,12 @@ class UsuariosModel extends Model
     return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
 
+  function getNombreUsuario($id_vendedor){
+    $sentencia = $this->db->prepare( "select nombre from vendedor where id_vendedor = ?");
+    $sentencia->execute([$id_vendedor]);
+    return $sentencia->fetch(PDO::FETCH_ASSOC);
+  }
+
   function guardarUsuario($nombre, $telefono, $localidad){
     $sentencia = $this->db->prepare('INSERT INTO vendedor(nombre, telefono, localidad) VALUES(?,?,?)');
     $sentencia->execute([$nombre, $telefono, $localidad]);

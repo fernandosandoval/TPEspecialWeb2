@@ -1,4 +1,3 @@
-<script src="js/nav.js" charset="utf-8"></script>
 
 <!DOCTYPE html>
       <html lang="en">
@@ -34,10 +33,10 @@
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                  <ul class="nav navbar-nav">
                      <li id="home"><a href="home">Home</a></li>
-                     <li id="items"><a href="items">Lista de Juegos</a></li>
-                     <li id="usuarios"><a href="usuarios">Lista de Vendedores</a></li>
-                     <li id="agregarI"><a href="guardarItem">Agregar Juego</a></li>
-                     <li id="agregarU"><a href="guardarUsuario">Agregar Vendedor</a></li>
+                     <li id="items"><a href="items" class="partial">Lista de Juegos</a></li>
+                     <li id="usuarios"><a href="usuarios" class="partial">Lista de Vendedores</a></li>
+                     <li id="agregarI"><a href="guardarItem" class="partial">Agregar Juego</a></li>
+                     <li id="agregarU"><a href="guardarUsuario" class="partial">Agregar Vendedor</a></li>
                      <li id="salir"><a href="logout">Salir</a></li>
                     </ul>
                    </div><!-- /.navbar-collapse -->
