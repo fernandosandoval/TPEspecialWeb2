@@ -41,7 +41,7 @@ class UsuariosController extends SecuredController
       $localidad = $_POST['localidad'];
       if(isset($_POST['nombre']) && !empty($_POST['nombre'])){
           $this->model->guardarUsuario($nombre, $telefono, $localidad);
-          header('Location: '.TABLAUSUARIOS);
+          header('Location: '.HOME);
           }
       else{
         $this->view->errorCrear("El nombre es requerido", $nombre, $telefono, $localidad);
@@ -49,13 +49,39 @@ class UsuariosController extends SecuredController
     }
   }
 
+  public function modify($params){
+    $id = ($params[0]);
+    print_r($id);
+    $item = $this->model->getUsuario($id);
+    $this->view->modificarUsuario($id);
+  }
+
+  public function update()
+  {
+    if (empty($_POST)){
+      echo ("no se esta pasando nada por post");
+      $this->view->modificarUsuario();
+    }
+    else {
+      //$rutaTempImagen = $_FILES['imagen']['tmp_name'];
+      $id = $_POST['id'];
+      $nombre = $_POST['nombre'];
+      $telefono = $_POST['telefono'];
+      $localidad = $_POST['localidad'];
+      if(isset($_POST['nombre']) && !empty($_POST['nombre'])){
+          $this->model->actualizarUsuario($nombre, $telefono, $localidad, $id);
+          header('Location: '.HOME);
+         }
+      else
+         $this->view->errorModificar("El vendedor no puede estar vacío", $nombre, $telefono, $localidad);
+     }
+  }
+
   public function destroy($params)
   {
     $id_vendedor = $params[0];
-    $this->model->borrarUsuarios($id_vendedor);
-    header('Location: '.TABLAUSUARIOS);
+    $this->model->borrarUsuario($id_vendedor);
+    header('Location: '.HOME);
   }
 
 }
-
- ?>

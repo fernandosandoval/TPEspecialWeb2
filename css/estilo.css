@@ -1,11 +1,11 @@
 body{
-  background-image: url("../Imagenes/ps4wall.jpg");
-  background-size: 1400px;
-  color:white;
+  background-image: url("../Imagenes/light_back.jpg");
+  background-size: 1366px 768px;
+  color:DarkBlue;
 }
 
 h2 {
-    color: white;
+    color: blue;
     text-decoration: none;
 }
 
@@ -35,7 +35,7 @@ h2 {
 }
 
 li a {
-    color: white;
+    color: black;
     padding: 20px 20px;
     text-decoration: none;
 }
@@ -45,7 +45,7 @@ li a:hover {
 }
 
 .titulo-tabla{
-  color: white;
+  color: black;
 }
 
 table {
@@ -53,7 +53,7 @@ table {
   border-collapse: collapse;
   width: 510px;
   font-size: 20px;
-  color: white;
+  color: black;
 }
 
 th {
@@ -81,7 +81,7 @@ td img{
 
 #contacto {
   clear: both;
-  color: lightblue;
+  color: DarkBlue;
   text-align: center;
 }
 

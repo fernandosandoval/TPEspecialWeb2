@@ -15,7 +15,17 @@ class ItemsController extends SecuredController
      parent::__construct();
      $this->view = new ItemsView();
      $this->model = new ItemsModel();
+     $this->modelU = new UsuariosModel();
   }
+
+  private function sonJPG($imagenesTipos){
+       foreach ($imagenesTipos as $tipo) {
+          if($tipo != 'image/jpeg') {
+           return false;
+         }
+       }
+       return true;
+   }
 
   public function index()
   {
@@ -27,10 +37,14 @@ class ItemsController extends SecuredController
     $this->view->mostrarItems($items);
   }
 
+  public function selectVendedor(){
+    $vendedores = $this->modelU->getUsuarios();
+    $this->view->seleccionarVendedor($vendedores);
+  }
+
   public function showItemsByUser(){
     $id_vendedor = $_POST['vendedor'];
-    $items = $this->model->getItemsPorUsuario();
-    $items = $this->model->getItems();
+    $items = $this->model->getItemsPorUsuario($id_vendedor);
     $this->view->mostrarItems($items);
   }
 
@@ -38,64 +52,77 @@ class ItemsController extends SecuredController
     $id = ($params[0]);
     $item = $this->model->getItem($id);
     $this->view->detalleItem($item);
-    //header('Location: '.TABLAITEMS);
   }
 
   public function create()
   {
-    $this->view->mostrarCrearItems();
+    $vendedores = $this->model->getUsuarios();
+    $this->view->mostrarCrearItems($vendedores);
   }
 
   public function modify($params){
     $id = ($params[0]);
+    print_r($id);
+    $item = $this->model->getItem($id);
     $this->view->modificarItem($id);
-    {
-      if (empty($_POST))
-        $this->view->mostrarCrearItems();
-      else {
-    //    $rutaTempImagen = $_FILES['imagen']['tmp_name'];
-        $nombre = $_POST['nombre'];
-        $genero = $_POST['genero'];
-        $precio = $_POST['precio'];
-        $descripcion = $_POST['descripcion'];
-        $vendedor = $_POST['vendedor'];
-        if(isset($_POST['vendedor']) && !empty($_POST['vendedor'])){
-            $this->model->guardarItem($nombre, $genero, $precio, $descripcion, $vendedor);
-            header('Location: '.TABLAITEMS);
-            }
-        else{
-          $this->view->errorCrear("El vendedor es requerido", $nombre, $genero, $precio, $descripcion, $vendedor);
-        }
-      }
-    }
   }
 
-  public function store()
+  public function update()
   {
-    if (empty($_POST))
-      $this->view->mostrarCrearItems();
+    if (empty($_POST)){
+      echo ("no se esta pasando nada por post");
+      $this->view->modificarItem();
+    }
     else {
-  //    $rutaTempImagen = $_FILES['imagen']['tmp_name'];
+      $id = $_POST['id'];
       $nombre = $_POST['nombre'];
       $genero = $_POST['genero'];
       $precio = $_POST['precio'];
       $descripcion = $_POST['descripcion'];
       $vendedor = $_POST['vendedor'];
       if(isset($_POST['vendedor']) && !empty($_POST['vendedor'])){
-          $this->model->guardarItem($nombre, $genero, $precio, $descripcion, $vendedor);
-          header('Location: '.TABLAITEMS);
+          $this->model->actualizarItem($nombre, $genero, $precio, $descripcion, $vendedor, $id);
+          header('Location: '.HOME);
           }
+      else
+         $this->view->errorModificar("El vendedor es requerido", $nombre, $genero, $precio, $descripcion, $vendedor);
+
+     }
+  }
+
+  public function store()
+  {
+    if (empty($_POST)){
+      $vendedores = $this->modelU->getUsuarios();
+      $this->view->mostrarCrearItems($vendedores);
+    }
+    else {
+      $rutaTempImagenes = $_FILES['imagen']['tmp_name'];
+      $nombre = $_POST['nombre'];
+      $genero = $_POST['genero'];
+      $precio = $_POST['precio'];
+      $descripcion = $_POST['descripcion'];
+      $vendedor = $_POST['vendedor'];
+      if(isset($_POST['vendedor']) && !empty($_POST['vendedor'])){
+            if($this->sonJPG($_FILES['imagen']['type'])) {
+                    $this->model->guardarItem($nombre, $genero, $precio, $descripcion, $vendedor, $rutaTempImagenes);
+                    header('Location: '.HOME);
+            }
+            else{
+              $this->view->errorCrear("La imagen tiene que ser JPG.", $nombre, $genero, $precio, $descripcion, $vendedor);
+            }
+      }
       else{
         $this->view->errorCrear("El vendedor es requerido", $nombre, $genero, $precio, $descripcion, $vendedor);
       }
-    }
   }
+}
 
   public function destroy($params)
   {
     $id_item = $params[0];
     $this->model->borrarItem($id_item);
-    header('Location: '.TABLAITEMS);
+//    header('Location: '.TABLAITEMS);
   }
 
 }

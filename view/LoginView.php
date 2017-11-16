@@ -7,6 +7,7 @@ class LoginView extends View
       $this->smarty->assign('error', $error);
       $this->smarty->display('templates/login/index.tpl');
   }
+
 }
 
 ?>

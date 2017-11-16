@@ -11,14 +11,24 @@ class ConfigApp{
       'borrarItem' => 'ItemsController#destroy',
       'detalleItem' => 'ItemsController#detail',
       'modificarItem' => 'ItemsController#modify',
+      'updateItem' => 'ItemsController#update',
       'home'=> 'UsuariosController#index',
       'usuarios' => 'UsuariosController#showUsuarios',
       'agregarUsuario' => 'UsuariosController#create',
       'guardarUsuario' => 'UsuariosController#store',
       'borrarUsuario' => 'UsuariosController#destroy',
+      'modificarUsuario' => 'UsuariosController#modify',
+      'updateUsuario' => 'UsuariosController#update',
       'login' => 'LoginController#index',
       'verificarUsuario' => 'LoginController#verify',
-      'logout' => 'LoginController#destroy'
+      'logout' => 'LoginController#destroy',
+      'registrarUsuario' => 'LoginController#signUp',
+      'borrarRegistrado' => 'AdminController#destroy',
+      'updateRegistrado' => 'AdminController#update',
+      'registrados' => 'AdminController#showRegistrados',
+      'itemsPorUsuario' => 'ItemsController#showItemsByUser',
+      'seleccionarVendedor' => 'ItemsController#selectVendedor',      
+
   ];
 }
 ?>

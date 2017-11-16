@@ -32,12 +32,14 @@
             <div class="container-navbar">
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                  <ul class="nav navbar-nav">
-                     <li id="home"><a href="home">Home</a></li>
-                     <li id="items"><a href="items" class="partial">Lista de Juegos</a></li>
+                     <li id="home"><a href="home" class="partial">Home</a></li>
+                     <li id="items"><a href="items" class="partial">Todos los Juegos</a></li>
+                     <li id="elegirU"><a href="seleccionarVendedor" class="partial">Juegos por Vendedor</a></li>
                      <li id="usuarios"><a href="usuarios" class="partial">Lista de Vendedores</a></li>
                      <li id="agregarI"><a href="guardarItem" class="partial">Agregar Juego</a></li>
                      <li id="agregarU"><a href="guardarUsuario" class="partial">Agregar Vendedor</a></li>
-                     <li id="salir"><a href="logout">Salir</a></li>
+                     <li id="admin"><a href="registrados" class="partial">Administrar datos</a></li>
+                     <li id="salir"><a href="logout" class="partial">Salir</a></li>
                     </ul>
                    </div><!-- /.navbar-collapse -->
                   </div> <!-- /container navbar -->

@@ -18,6 +18,23 @@
         die();
       }
    }
- }
 
+   public function esAdmin($value='')
+   {
+    $esAdmin=false;
+    if(isset($_SESSION['ADMIN'])&& $_SESSION['ADMIN']==1){
+         $esAdmin=true;
+    }
+    return $esAdmin;
+   }
+
+  public function esUsuario($value='')
+  {
+    $esUsuario=false;
+    if(isset($_SESSION['USER'])){
+        $usuario=true;
+    }
+    return $esUsuario;
+  }
+}
   ?>

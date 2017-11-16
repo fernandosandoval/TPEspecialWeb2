@@ -3,8 +3,12 @@
     {if isset($error) }
       <div class="alert alert-danger" role="alert">{$error}</div>
     {/if}
-    <form action="guardarItem" method="post">
+    <form action="guardarItem" method="post" enctype="multipart/form-data">
       <div class="form-group">
+        <label for="imagen">Imagen</label>
+          <input type="file" id="imagen" name="imagen">
+        </div>
+        <div class="form-group">
         <label for="juego">Nombre</label>
         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del item">
       </div>
@@ -22,7 +26,11 @@
       </div>
       <div class="form-group">
         <label for="vendedor">Vendedor</label>
-        <input type="number" id="vendedor" name="vendedor" placeholder="Vendedor">
+        <select name=vendedor>
+          {foreach from=$vendedores item=vend}
+             <option value="{$vend['id_vendedor']}">{$vend['nombre']}</option>
+          {/foreach}
+        </select>  
       </div>
       <button type="submit" class="btn btn-default">Agregar</button>
     </form>

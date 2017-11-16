@@ -35,6 +35,11 @@ class UsuariosModel extends Model
     $sentencia = $this->db->prepare( "delete from vendedor where id_vendedor=?");
     $sentencia->execute([$id_vendedor]);
   }
+
+  function actualizarUsuario($nombre, $telefono, $localidad, $id_vendedor){
+    $sentencia = $this->db->prepare('UPDATE vendedor SET nombre=?, telefono=?, localidad=? WHERE id_vendedor=?');
+    $sentencia->execute([$nombre, $telefono, $localidad, $id_vendedor]);
+  }
 }
 
 

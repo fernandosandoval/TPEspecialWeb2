@@ -30,23 +30,36 @@ class ItemsView extends View
     $smarty->display('templates/carousel.tpl');
   }
 
-  function mostrarCrearItems(){
-    $this->assignarItemForm();
+  function mostrarCrearItems($vendedores){
+    $this->asignarItemForm();
+    $this->smarty->assign('vendedores', $vendedores);
     $this->smarty->display('templates/formCrearItem.tpl');
   }
 
-  function modificarItems(){
-    $this->assignarItemForm();
+  function seleccionarVendedor($vendedores){
+    $this->smarty->assign('vendedores', $vendedores);
+    $this->smarty->display('templates/elegirVendedor.tpl');
+  }
+
+  function modificarItem($id){
+    $this->asignarItemForm();
+    $this->smarty->assign('id', $id);
     $this->smarty->display('templates/formModificarItem.tpl');
   }
 
   function errorCrear($error, $nombre, $genero, $precio, $descripcion, $vendedor){
-    $this->assignarItemForm($nombre, $genero, $precio, $descripcion, $vendedor);
+    $this->asignarItemForm($nombre, $genero, $precio, $descripcion, $vendedor);
     $this->smarty->assign('error', $error);
     $this->smarty->display('templates/formCrearItem.tpl');
   }
 
-  private function assignarItemForm($nombre='', $genero='', $precio='', $descripcion='', $vendedor=''){
+  function errorModificar($error, $nombre, $genero, $precio, $descripcion, $vendedor){
+    $this->asignarItemForm($nombre, $genero, $precio, $descripcion, $vendedor);
+    $this->smarty->assign('error', $error);
+    $this->smarty->display('templates/formModificarItem.tpl');
+  }
+
+  private function asignarItemForm($nombre='', $genero='', $precio='', $descripcion='', $vendedor=''){
     $this->smarty->assign('nombre', $nombre);
     $this->smarty->assign('genero', $genero);
     $this->smarty->assign('precio', $precio);

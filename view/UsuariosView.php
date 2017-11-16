@@ -26,21 +26,35 @@ class UsuariosView extends View
   }
 
   function mostrarCrearUsuarios(){
-    $this->assignarUsuarioForm();
+    $this->asignarUsuarioForm();
     $this->smarty->display('templates/formCrearUsuario.tpl');
   }
 
   function errorCrear($error, $nombre, $telefono, $localidad){
-    $this->assignarUsuarioForm($nombre, $telefono, $localidad);
+    $this->asignarUsuarioForm($nombre, $telefono, $localidad);
     $this->smarty->assign('error', $error);
     $this->smarty->display('templates/formCrearUsuario.tpl');
   }
 
-  private function assignarUsuarioForm($nombre='', $telefono='', $localidad=''){
+  private function asignarUsuarioForm($nombre='', $telefono='', $localidad=''){
     $this->smarty->assign('nombre', $nombre);
     $this->smarty->assign('telefono', $telefono);
     $this->smarty->assign('localidad', $localidad);
   }
+
+
+  function modificarUsuario($id){
+      $this->asignarUsuarioForm();
+      $this->smarty->assign('id', $id);
+      $this->smarty->display('templates/formModificarUsuario.tpl');
+  }
+
+  function errorModificar($error, $nombre, $telefono, $localidad){
+    $this->asignarUsuarioForm($nombre, $telefono, $localidad);
+    $this->smarty->assign('error', $error);
+    $this->smarty->display('templates/formModificarUsuario.tpl');
+  }
+
 }
 
 

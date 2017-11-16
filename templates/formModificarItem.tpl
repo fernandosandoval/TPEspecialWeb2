@@ -1,10 +1,15 @@
+<div class="titulo-tabla">
 <h2>Modificar Datos del Juego</h2>
+</div>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     {if isset($error) }
       <div class="alert alert-danger" role="alert">{$error}</div>
     {/if}
-    <form action="modificarItem" method="post">
+    <!-- <p> Estas modificando el item número {($id)}</p> -->
+    <form action="updateItem" method="post">
+      <label for="id">Estas por modificar el item: "{$id}"</label><br>
+        <input type="hidden" name="id" class="form-control" value="{$id}" >
       <div class="form-group">
         <label for="juego">Nombre</label>
         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del item">
@@ -25,7 +30,7 @@
         <label for="vendedor">Vendedor</label>
         <input type="number" id="vendedor" name="vendedor" placeholder="Vendedor">
       </div>
-      <button type="submit" class="btn btn-default">Agregar</button>
+      <button type="submit" class="btn btn-default">Modificar</button>
     </form>
   </div>
 </div>
