@@ -1,3 +1,4 @@
+{include file="../header.tpl"}
 <div id="partialRenderContainer">
        <div class="row">
          <div class="col-md-6 col-md-offset-3">
@@ -37,3 +38,4 @@
              <button type="submit" class="btn btn-default">Crear Usuario</button>
          </div>
        </div>
+{include file="../footer.tpl"}

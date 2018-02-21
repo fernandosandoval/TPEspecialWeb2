@@ -16,6 +16,11 @@ class LoginController extends Controller
     $this->view->mostrarLogin();
   }
 
+  public function relogin()
+  {
+    $this->view->mostrarRelogin();
+  }
+
   public function verify(){
     $userName = $_POST['usuario'];
     $password = $_POST['password'];
@@ -40,7 +45,7 @@ class LoginController extends Controller
    {
      session_start();
      session_destroy();
-     header('Location: '.LOGIN);
+     header('Location: '.RELOGIN);
    }
 
    public function signUp()

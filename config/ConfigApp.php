@@ -4,7 +4,7 @@ class ConfigApp{
   public static $PARAMS = 'params';
   public static $ACTIONS = [
       ''=> 'ItemsController#index',
-      'home'=> 'ItemsController#index',
+      'home'=> 'ItemsController#home',
       'items' => 'ItemsController#showItems',
       'agregarItem' => 'ItemsController#create',
       'guardarItem' => 'ItemsController#store',
@@ -12,7 +12,7 @@ class ConfigApp{
       'detalleItem' => 'ItemsController#detail',
       'modificarItem' => 'ItemsController#modify',
       'updateItem' => 'ItemsController#update',
-      'home'=> 'UsuariosController#index',
+    //  'home'=> 'UsuariosController#index',
       'usuarios' => 'UsuariosController#showUsuarios',
       'agregarUsuario' => 'UsuariosController#create',
       'guardarUsuario' => 'UsuariosController#store',
@@ -20,14 +20,16 @@ class ConfigApp{
       'modificarUsuario' => 'UsuariosController#modify',
       'updateUsuario' => 'UsuariosController#update',
       'login' => 'LoginController#index',
+      'relogin' => 'LoginController#relogin',
       'verificarUsuario' => 'LoginController#verify',
       'logout' => 'LoginController#destroy',
       'registrarUsuario' => 'LoginController#signUp',
       'borrarRegistrado' => 'AdminController#destroy',
       'updateRegistrado' => 'AdminController#update',
+      'borrarImagen' => 'AdminController#destroyImage',
       'registrados' => 'AdminController#showRegistrados',
       'itemsPorUsuario' => 'ItemsController#showItemsByUser',
-      'seleccionarVendedor' => 'ItemsController#selectVendedor',      
+      'seleccionarVendedor' => 'ItemsController#selectVendedor',
 
   ];
 }

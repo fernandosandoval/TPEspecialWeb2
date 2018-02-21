@@ -8,7 +8,7 @@
         <label for="vendedor">Vendedor</label>
         <select name=vendedor>
           {foreach from=$vendedores item=vend}
-             <option value="{$vend['']}">{$vend['nombre']}</option>
+             <option value="{$vend['id_vendedor']}">{$vend['nombre']}</option>
           {/foreach}
         </select>
       </div>

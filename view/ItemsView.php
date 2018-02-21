@@ -11,8 +11,9 @@ class ItemsView extends View
       $this->smarty->display('templates/items.tpl');
   }
 
-  function detalleItem($item){
+  function detalleItem($item, $imagenes){
       $this->smarty->assign('item', $item);
+      $this->smarty->assign('imagenes', $imagenes);
       $this->smarty->display('templates/detalleItem.tpl');
   }
 
@@ -24,10 +25,10 @@ class ItemsView extends View
   }
 
   function mostrarHome(){
-    $titulo = "Juegos y Consolas";
-    $smarty = new Smarty();
-    $smarty->assign('titulo', $titulo);
-    $smarty->display('templates/carousel.tpl');
+    // $titulo = "Juegos y Consolas";
+    // $smarty = new Smarty();
+    // $smarty->assign('titulo', $titulo);
+    $this->smarty->display('templates/carousel.tpl');
   }
 
   function mostrarCrearItems($vendedores){
@@ -66,6 +67,8 @@ class ItemsView extends View
     $this->smarty->assign('descripcion', $descripcion);
     $this->smarty->assign('vendedor', $vendedor);
   }
+
+
 }
 
 

@@ -16,9 +16,9 @@ class UsuariosController extends SecuredController
      $this->model = new UsuariosModel();
   }
 
-  public function index()
+  public function home()
   {
-    $this->view->mostrarIndex();
+    $this->view->mostrarHome();
   }
 
   public function showUsuarios(){

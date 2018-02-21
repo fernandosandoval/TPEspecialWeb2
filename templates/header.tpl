@@ -26,7 +26,7 @@
                  <span class="icon-bar"></span>
                  <span class="icon-bar"></span>
               </button>
-             <a class="navbar-brand" href="home">Juegos y Consolas</a>
+             <!-- <a class="navbar-brand" href="home">Juegos y Consolas</a> -->
           </div> <!-- navbar-header-->
           <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="container-navbar">

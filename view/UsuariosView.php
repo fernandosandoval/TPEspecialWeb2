@@ -19,10 +19,7 @@ class UsuariosView extends View
   }
 
   function mostrarHome(){
-    $titulo = "Juegos y Consolas";
-    $smarty = new Smarty();
-    $smarty->assign('titulo', $titulo);
-    $smarty->display('templates/carousel.tpl');
+    $this->smarty->display('templates/carousel.tpl');
   }
 
   function mostrarCrearUsuarios(){

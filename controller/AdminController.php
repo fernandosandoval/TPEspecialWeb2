@@ -25,6 +25,8 @@ class AdminController extends SecuredController
   public function showRegistrados(){
     $permiso = $this->esAdmin();
     if($permiso){
+          $arrNombre = [];
+          $arrCamino = [];
           $registrados = $this->model->getRegistrados();
           $imagenesItem = $this->model->getImagenesDeItems();
           $this->view->mostrarRegistrados($registrados,$imagenesItem);
@@ -50,6 +52,14 @@ class AdminController extends SecuredController
   {
     $id_usuario = $params[0];
     $this->model->borrarRegistrado($id_usuario);
+    header('Location: '.HOME);
+
+  }
+
+  public function destroyImage($params)
+  {
+    $id_imagen = $params[0];
+    $this->model->borrarImagen($id_imagen);
     header('Location: '.HOME);
 
   }

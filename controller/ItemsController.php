@@ -32,6 +32,11 @@ class ItemsController extends SecuredController
     $this->view->mostrarIndex();
   }
 
+  public function home()
+  {
+    $this->view->mostrarHome();
+  }
+
   public function showItems(){
     $items = $this->model->getItems();
     $this->view->mostrarItems($items);
@@ -44,14 +49,22 @@ class ItemsController extends SecuredController
 
   public function showItemsByUser(){
     $id_vendedor = $_POST['vendedor'];
-    $items = $this->model->getItemsPorUsuario($id_vendedor);
+    $arr = str_split($id_vendedor);
+    $items = $this->model->getItemsPorUsuario($arr);
     $this->view->mostrarItems($items);
   }
 
   public function detail($params){
     $id = ($params[0]);
+    $result = [];
     $item = $this->model->getItem($id);
-    $this->view->detalleItem($item);
+    $arrayimagen = $this->model->obtenerImagen($id);
+    $elementoimagen = $arrayimagen[0];
+    foreach (($elementoimagen) as $elem){
+       $camino = $elem['path'];
+       array_push($result, $camino);
+    }
+    $this->view->detalleItem($item, $result);
   }
 
   public function create()

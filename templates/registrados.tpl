@@ -9,14 +9,18 @@
             <thead>
               <tr>
                 <th>Email</th>
-                <th>Es Administrador</th>
+                <th>Permisos</th>
               </tr>
             </thead>
             <tbody>
               {foreach from=$registrados item=registrado}
                 <tr>
                   <td>{$registrado['usuario']}</td>
-                  <td>{$registrado['es_admin']}</td>
+                  {if $registrado['es_admin']}
+                     <td>{"Administrador"}</td>
+                  {else}
+                     <td>{"Usuario Común"}</td>
+                  {/if}
                   <td><a class="partial" href="updateregistrado/{$registrado['id_usuario']}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
                   <td><a class="partial" href="borrarRegistrado/{$registrado['id_usuario']}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
                 </tr>
@@ -36,8 +40,11 @@
               <tbody>
                 {foreach from=$imagenesItem item=imagen}
                   <tr>
-                    <td>{$imagen['id_item']}</td>
-                    <td>{$imagen['id_imagen']}</td>
+                    <td>{$imagen['nombre']}</td>
+                    <td>{$imagen['camino']}</td>
+                    <td><a class="partial" href="borrarImagen/{$imagen['id_imagen']}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                    <!-- <li class="list-group-item">Imagen: <img src="{$imagen[1]}"></li> -->
+                    <!-- <td>{$imagen['id_imagen']}</td> -->
                     <!-- <td><a class="partial" href="agregarImagen/{$imagen['id_item']}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
                      <td><a class="partial" href="borrarImagen/{$imagen['id_imagen']}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td> -->
                   </tr>

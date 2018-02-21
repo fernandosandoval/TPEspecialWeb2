@@ -28,12 +28,16 @@ class AdminModel extends Model
     $sentencia->execute([$es_admin, $id_usuario]);
   }
 
-  function getImagenesDeItems(){
-    $sentencia = $this->db->prepare('SELECT i.id_item, i.nombre as juego, im.id_imagen, im.path as ruta,  FROM item i, imagen im WHERE i.id_item = im.fk_id_item');
-    $sentencia->execute();
-    $sentencia->fetchAll(PDO::FETCH_ASSOC);
-    print_r($sentencia);
-    return $sentencia;
+  function getImagenesdeItems(){
+       $sentencia_imagenes = $this->db->prepare('SELECT i.nombre as nombre, im.path as camino, im.id_imagen as id_imagen FROM item i, imagen im WHERE im.fk_id_item = i.id_item');
+       $sentencia_imagenes->execute();
+       $imagenes = $sentencia_imagenes->fetchAll(PDO::FETCH_ASSOC);
+       return $imagenes;
+  }
+
+  function borrarImagen($id_imagen){
+    $sentencia = $this->db->prepare('DELETE FROM imagen WHERE id_imagen=?');
+    $sentencia->execute([$id_imagen]);
   }
 
 }
