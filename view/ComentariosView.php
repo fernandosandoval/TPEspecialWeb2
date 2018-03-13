@@ -1,10 +1,9 @@
 <?php
 	class ComentariosView extends View
 	{
-		function mostrarComentarios($comentarios)
+		function showComentarios()
 		{
-			$this->smarty->assign('comentarios', $comentarios);
-			$this->smarty->display('templates/comentarios/index.tpl');
+			$this->smarty->display('templates/comentarios/indexComentarios.tpl');
 		}
 	}
  ?>

@@ -38,6 +38,7 @@
                      <li id="usuarios"><a href="usuarios" class="partial">Lista de Vendedores</a></li>
                      <li id="agregarI"><a href="guardarItem" class="partial">Agregar Juego</a></li>
                      <li id="agregarU"><a href="guardarUsuario" class="partial">Agregar Vendedor</a></li>
+                     <li id="listaC"><a href="comentarios" class="partial">Comentarios</a></li>
                      <li id="admin"><a href="registrados" class="partial">Administrar datos</a></li>
                      <li id="salir"><a href="logout" class="partial">Salir</a></li>
                     </ul>

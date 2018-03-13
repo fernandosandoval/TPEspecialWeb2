@@ -57,7 +57,7 @@
         public function createComentario($url_params = []) {
             if(sizeof($url_params) == 0) {
               $body = json_decode($this->raw_data);
-              var_dump($body);
+            //  var_dump($body);
               $texto = $body->texto;
               $fk_id_usuario = $body->fk_id_usuario;
               $fk_id_item = $body->fk_id_item;
@@ -70,5 +70,10 @@
                     return $this->json_response(false, 404);
             }
           }
+
+        public function showComentarios(){
+              $comentario = $this->getComentarios();
+
+        }
     }
  ?>

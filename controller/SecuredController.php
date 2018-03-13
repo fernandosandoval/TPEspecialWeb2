@@ -7,7 +7,7 @@
     {
       session_start();
       if(isset($_SESSION['USER'])){
-        if (time() - $_SESSION['LAST_ACTIVITY'] > 3000) {
+        if (time() - $_SESSION['LAST_ACTIVITY'] > 300000000) {
           header('Location: '.LOGOUT);
           die();
         }

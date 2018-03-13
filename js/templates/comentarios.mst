@@ -1,0 +1,8 @@
+{{#comentarios}}
+<tr>
+    <td>{{id_comentario}}</td>
+    <td>{{nombre}}</td>
+    <td>{{texto}}</td>
+    <td><a href="borrarComentario/{{id_comentario}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+</tr>
+{{/comentarios}}

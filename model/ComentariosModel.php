@@ -2,7 +2,7 @@
 class ComentariosModel extends Model{
 
     function getComentarios(){
-        $sentencia=$this->db->prepare('SELECT c.id_comentario, c.texto, u.usuario, i.nombre, c.puntaje
+        $sentencia=$this->db->prepare('SELECT c.id_comentario, c.texto, u.usuario, c.fk_id_usuario, i.nombre, c.puntaje
           FROM comentario c, usuario u, item i WHERE c.fk_id_usuario = u.id_usuario AND
           c.fk_id_item = i.id_item');
         $sentencia->execute();
@@ -11,7 +11,7 @@ class ComentariosModel extends Model{
 
 		function getComentario($id_comentario){
       $sentencia=$this->db->prepare('SELECT c.id_comentario, c.texto, u.usuario, i.nombre, c.puntaje
-          FROM comentario c, vendedor v, item i WHERE c.fk_id_usuario = u.id_usuario AND
+          FROM comentario c, usuario u, item i WHERE c.fk_id_usuario = u.id_usuario AND
           c.fk_id_item = i.id_item AND c.id_comentario=?');
 			$sentencia->execute([$id_comentario]);
 			return $sentencia->fetch(PDO::FETCH_ASSOC);

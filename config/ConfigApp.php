@@ -30,7 +30,7 @@ class ConfigApp{
       'registrados' => 'AdminController#showRegistrados',
       'itemsPorUsuario' => 'ItemsController#showItemsByUser',
       'seleccionarVendedor' => 'ItemsController#selectVendedor',
-
+      'comentarios' => 'comentariosController#index',
   ];
 }
 ?>
