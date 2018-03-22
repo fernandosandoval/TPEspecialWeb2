@@ -15,11 +15,5 @@
 			$this->view->showComentarios();
 		}
 
-		// public function destroy($params)
-		// {
-		// 	$id_comentario = $params[0];
-		// 	$this->model->deleteComentario($id_comentario);
-		// 	header('Location: '.ABM);
-		// }
 	}
  ?>

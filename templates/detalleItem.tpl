@@ -8,10 +8,15 @@
             <li class="list-group-item">Precio: {$item['precio']}</li>
             <li class="list-group-item">Descripcion: {$item['descripcion']}</li>
             <li class="list-group-item">Vendedor: {$item['fk_id_vendedor']}</li>
-            
+
             {foreach from=$imagenes item=imagen}
             <li class="list-group-item">Imagen: <img src="{$imagen}"></li>
 
+            {/foreach}
+            {foreach from=$comentarios item=comentario}
+            <li class="list-group-item">Comentario: {$comentario['texto']}</li>
+            <li class="list-group-item">Usuario: {$comentario['usuario']}</li>
+            <li class="list-group-item">Puntaje: {$comentario['puntaje']}</li>
             {/foreach}
 
 

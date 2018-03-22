@@ -6,7 +6,7 @@
      public static $RESOURCES = [
        'comentarios#GET' => 'ComentariosApiController#getComentarios',
        'comentarios#POST' => 'ComentariosApiController#createComentario',
-	     'comentarios#DELETE' => 'ComentariosApiController#deleteComentario'
+	     'comentarios#DELETE' => 'ComentariosApiController#destroyComentario'
      ];
  }
  ?>

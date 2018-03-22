@@ -6,7 +6,7 @@
   RewriteCond %{REQUEST_FILENAME} -l
 
   # Dejamos que el contenido estatico sea accedido con el metodo por defecto
-  RewriteRule ^[css|img|js].*$ - [L]
+  RewriteRule ^[css|img|js|fonts].*$ - [L]
   # El guión medio indica que no se sustituya la url.
   # Con la "L", de coincidir con la expreción regular, esta regla es la ultima,
   # y no intenta continuar con las siguientes.

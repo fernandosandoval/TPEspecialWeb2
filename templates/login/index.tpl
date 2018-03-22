@@ -22,11 +22,11 @@
            <form action="registrarUsuario" method="post">
              <div class="form-group">
                <label for="email">Email</label>
-               <input type="text" class="form-control" id="usuario" name="usuario" placeholder="usuario" required>
+               <input type="text" class="form-control" id="usuarioN" name="usuario" placeholder="usuario" required>
              </div>
              <div class="form-group">
                <label for="password">Password</label>
-               <input type="password" class="form-control" id="password" name ="password" placeholder="contraseña" required>
+               <input type="password" class="form-control" id="passwordN" name ="password" placeholder="contraseña" required>
              </div>
              <div class="form-group">
                <label for="password2">Vuelva a ingresar su Password</label>

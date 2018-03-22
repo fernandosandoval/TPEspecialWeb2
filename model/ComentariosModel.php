@@ -4,8 +4,16 @@ class ComentariosModel extends Model{
     function getComentarios(){
         $sentencia=$this->db->prepare('SELECT c.id_comentario, c.texto, u.usuario, c.fk_id_usuario, i.nombre, c.puntaje
           FROM comentario c, usuario u, item i WHERE c.fk_id_usuario = u.id_usuario AND
-          c.fk_id_item = i.id_item');
+          c.fk_id_item = i.id_item ORDER BY id_comentario');
         $sentencia->execute();
+        return $sentencia->fetchAll(PDO::FETCH_ASSOC);
+		}
+
+    function getComentariosByItem($id){
+        $sentencia=$this->db->prepare('SELECT c.texto, u.usuario, i.nombre, c.puntaje
+          FROM comentario c, usuario u, item i WHERE c.fk_id_usuario = u.id_usuario AND
+          c.fk_id_item = ? ORDER BY id_comentario');
+        $sentencia->execute($id);
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);
 		}
 
@@ -17,8 +25,8 @@ class ComentariosModel extends Model{
 			return $sentencia->fetch(PDO::FETCH_ASSOC);
 		}
 
-    function guardarComentario($texto, $fk_id_usuario, $fk_id_item, $puntaje){
-			$sentencia = $this->db->prepare('INSERT INTO comentario (texto, fk_id_usuario, fk_id_item, puntaje) VALUES(?,?,?,?)');
+    function setComentario($texto, $fk_id_usuario, $fk_id_item, $puntaje){
+			$sentencia = $this->db->prepare('INSERT INTO Comentario (texto, fk_id_usuario, fk_id_item, puntaje) VALUES(?,?,?,?)');
 			$sentencia->execute([$texto, $fk_id_usuario, $fk_id_item, $puntaje]);
 		}
 

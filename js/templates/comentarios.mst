@@ -1,8 +1,10 @@
 {{#comentarios}}
 <tr>
-    <td>{{id_comentario}}</td>
+    <td idrow="{{id_comentario}}">{{id_comentario}}</td>
     <td>{{nombre}}</td>
     <td>{{texto}}</td>
-    <td><a href="borrarComentario/{{id_comentario}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+    <td>{{usuario}}</td>
+    <td>{{puntaje}}</td>
+    <td><a class="js-borrar" data-idcomentario="{{id_comentario}}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
 </tr>
 {{/comentarios}}

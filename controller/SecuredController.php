@@ -32,9 +32,20 @@
   {
     $esUsuario=false;
     if(isset($_SESSION['USER'])){
-        $usuario=true;
+        $esUsuario=true;
     }
     return $esUsuario;
   }
+
+  public function esInvitado($value='')
+  {
+    $esInvitado=false;
+    if(isset($_SESSION['GUEST'])){
+        $esInvitado=true;
+    }
+    return $esInvitado;
+  }
+
+
 }
   ?>

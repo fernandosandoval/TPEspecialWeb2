@@ -1,16 +1,16 @@
 <div id="partialRenderContainer">
        <div class="row">
          <div class="col-md-6 col-md-offset-3">
-          <h2>Usted ha salido con exito. Para volver al menú, por favor ingrese sus datos.</h2>
+          <h2>Usted ha salido con éxito. Para volver al menú, por favor ingrese sus datos.</h2>
           <h3>Usuarios Registrados<h3>
            <form action="verificarUsuario" method="post">
              <div class="form-group">
-               <label for="usuario">Usuario o Email</label>
-               <input type="text" class="form-control" id="usuario" name="usuario" placeholder="nombre" required>
+               <label for="usuarioRL">Usuario o Email</label>
+               <input type="text" class="form-control" id="usuarioRL" name="usuario" placeholder="nombre" required>
              </div>
              <div class="form-group">
-               <label for="password">Password</label>
-               <input type="password" class="form-control" id="password" name ="password" placeholder="contraseña" required>
+               <label for="passwordRL">Password</label>
+               <input type="password" class="form-control" id="passwordRL" name ="password" placeholder="contraseña" required>
              </div>
              {if !empty($error) }
                <div class="alert alert-danger" role="alert">{$error}</div>
@@ -21,11 +21,11 @@
            <form action="registrarUsuario" method="post">
              <div class="form-group">
                <label for="email">Email</label>
-               <input type="text" class="form-control" id="usuario" name="usuario" placeholder="usuario" required>
+               <input type="text" class="form-control" id="usuarioN" name="usuario" placeholder="usuario" required>
              </div>
              <div class="form-group">
                <label for="password">Password</label>
-               <input type="password" class="form-control" id="password" name ="password" placeholder="contraseña" required>
+               <input type="password" class="form-control" id="passwordN" name ="password" placeholder="contraseña" required>
              </div>
              <div class="form-group">
                <label for="password2">Vuelva a ingresar su Password</label>

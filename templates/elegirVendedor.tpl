@@ -12,7 +12,7 @@
               {/foreach}
             </select>
           </div>
-          <button type="submit" class="partial" id="btn btn-default">Listo</button>
+          <button type="submit" id="btn btn-default">Listo</button>
         </form>
     </div>
 </div>
