@@ -3,6 +3,5 @@
 		<table id="tablaComentarios" class="table table-striped">
 
 		</table>
-		{include file="templates/formCrearComentario.tpl"}
-	</div>
+
 </div>

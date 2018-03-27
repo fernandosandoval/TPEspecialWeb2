@@ -23,8 +23,6 @@
         <input type="number" id="puntaje" name="puntaje" min="1" max="5">
       </div>
 
-      <!-- <img src="captcha/captchaphp.php"><br/> -->
-      <!-- <input type="text" name="captcha"> -->
       <button id="btnCrearComentario" type="submit" class="btn btn-default">Crear Comentario</button>
     </form>
   </div>

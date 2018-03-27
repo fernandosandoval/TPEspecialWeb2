@@ -10,10 +10,12 @@ class ComentariosModel extends Model{
 		}
 
     function getComentariosByItem($id){
-        $sentencia=$this->db->prepare('SELECT c.texto, u.usuario, i.nombre, c.puntaje
+      //  var_dump($id);
+        $arr = str_split($id);
+        $sentencia=$this->db->prepare('SELECT c.texto, u.usuario, i.nombre, c.puntaje, c.fk_id_item
           FROM comentario c, usuario u, item i WHERE c.fk_id_usuario = u.id_usuario AND
-          c.fk_id_item = ? ORDER BY id_comentario');
-        $sentencia->execute($id);
+          c.fk_id_item =  i.id_item AND i.id_item = ? ORDER BY id_comentario');
+        $sentencia->execute($arr);
         return $sentencia->fetchAll(PDO::FETCH_ASSOC);
 		}
 

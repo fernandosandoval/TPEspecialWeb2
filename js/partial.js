@@ -2,8 +2,10 @@
 $(document).ready(function(){
 
   let templateComentario;
+  let templateComentarioItem;
   let int;
   $.ajax({ url: 'js/templates/comentarios.mst'}).done( template => templateComentario = template);
+  $.ajax({ url: 'js/templates/comentariosItem.mst'}).done( template => templateComentarioItem = template);
 
 
   $(document).on('click','a.partial', function(e){
@@ -34,6 +36,28 @@ $(document).ready(function(){
       });
   });
 
+  $(document).on('click','a.partialComXItem', function(e){
+      e.preventDefault();
+      let itemStr = $(this).attr('data-target');
+      console.log(itemStr);
+      let itemArr = itemStr.split("/");
+      console.log(itemArr);
+      let itemSelec = itemArr[1];
+      console.log(itemSelec);
+//      debugger;
+      $.ajax({
+          url: $(this).attr('data-target'),
+          type: 'GET',
+          success: function(result){
+            $("#partialRenderContainer").html(result);
+            cargarComentariosPorItem(itemSelec);
+            int = setInterval(function () {
+                cargarComentariosPorItem(itemSelec);
+            }, 2000);
+          }
+      });
+  });
+
    function encabezadoComentario(){
       var element = '<tr> <th>Número</th>';
       element += '<th>Juego</th>';
@@ -43,6 +67,16 @@ $(document).ready(function(){
       element += '</tr>';
       return element;
     }
+
+    function encabezadoComentarioItem(){
+       var element = '<tr><th>Juego</th>';
+       element += '<th>Comentario</th>';
+       element += '<th>Usuario</th>';
+       element += '<th>Puntaje</th>';
+       element += '</tr>';
+       return element;
+     }
+
 
   function cargarComentarios() {
         $.ajax("api/comentarios")
@@ -58,6 +92,21 @@ $(document).ready(function(){
                 $('#tablaComentarios').append('<li>Error al cargar los comentarios</li>');
             });
     }
+
+    function cargarComentariosPorItem(item) {
+          $.ajax("api/comentariosI/"+item)
+              .done(function(comentarios) {
+                console.log(comentarios);
+                $('tr').remove();
+                $('#tablaComentariosItem').append(encabezadoComentarioItem());
+                let rendered = Mustache.render(templateComentarioItem , {comentarios: comentarios});
+                console.log(rendered);
+                $('#tablaComentariosItem').append(rendered);
+              })
+              .fail(function() {
+                  $('#tablaComentariosItem').append('<li>Error al cargar los comentarios</li>');
+              });
+      }
 
   function crearComentario() {
         let comentario ={

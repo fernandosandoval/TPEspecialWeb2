@@ -51,6 +51,9 @@
                 {/foreach}
               </tbody>
             </table>
+
+            <!-- {include file="comentarios/indexComentarios.tpl"} -->
+
       </div>
     </div>
   </div>

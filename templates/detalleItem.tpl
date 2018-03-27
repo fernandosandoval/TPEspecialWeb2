@@ -11,13 +11,9 @@
 
             {foreach from=$imagenes item=imagen}
             <li class="list-group-item">Imagen: <img src="{$imagen}"></li>
+            {/foreach}
 
-            {/foreach}
-            {foreach from=$comentarios item=comentario}
-            <li class="list-group-item">Comentario: {$comentario['texto']}</li>
-            <li class="list-group-item">Usuario: {$comentario['usuario']}</li>
-            <li class="list-group-item">Puntaje: {$comentario['puntaje']}</li>
-            {/foreach}
+            {include file="comentarios/listaComentariosItem.tpl"}
 
 
      </div>

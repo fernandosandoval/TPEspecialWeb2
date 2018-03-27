@@ -30,6 +30,17 @@
 
         }
 
+        public function getComentariosItem($url_params = [])
+        {
+              $id = $url_params[":id"];
+              $comentarios = $this->model->getComentariosByItem($id);
+              if($comentarios)
+                  return $this->json_response($comentarios, 200);
+              else
+                  return $this->json_response(false, 404);
+
+        }
+
 
         public function destroyComentario($url_params = [])
         {
@@ -37,7 +48,7 @@
             case 0:
               return $this->json_response(false, 400);
               break;
-            case 1:        
+            case 1:
               $id = $url_params[":id"];
               $comentario = $this->model->getComentario($id);
               if($comentario)
