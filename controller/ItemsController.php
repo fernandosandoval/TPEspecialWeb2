@@ -3,6 +3,8 @@ include_once('model/ItemsModel.php');
 include_once('view/ItemsView.php');
 include_once('model/UsuariosModel.php');
 include_once('controller/SecuredController.php');
+include_once('controller/AdminController.php');
+
 
 /**
  *
@@ -16,6 +18,7 @@ class ItemsController extends SecuredController
      $this->view = new ItemsView();
      $this->model = new ItemsModel();
      $this->modelU = new UsuariosModel();
+     $this->modelA = new AdminModel();
   }
 
   private function sonJPG($imagenesTipos){
@@ -25,7 +28,7 @@ class ItemsController extends SecuredController
          }
        }
        return true;
-   }
+  }
 
   public function index()
   {
@@ -47,8 +50,10 @@ class ItemsController extends SecuredController
     $this->view->seleccionarVendedor($vendedores);
   }
 
-  public function showItemsByUser(){
-    $id_vendedor = $_POST['vendedor'];
+  public function showItemsByUser($params){
+
+    $id_vendedor = $params[0];
+  //  var_dump($id_vendedor);
     $arr = str_split($id_vendedor);
     $items = $this->model->getItemsPorUsuario($arr);
     $this->view->mostrarItems($items);
@@ -61,10 +66,14 @@ class ItemsController extends SecuredController
     $arrayimagen = $this->model->obtenerImagen($id);
     $elementoimagen = $arrayimagen[0];
     foreach (($elementoimagen) as $elem){
-       $camino = $elem['path'];
+       $camino = $elem['camino'];
        array_push($result, $camino);
     }
-    $this->view->detalleItem($item, $result);
+    $usuario = $_SESSION['USER'];
+  //  echo "Ud es el usuario $usuario";
+    $idusuario = $this->modelA->obtenerId($usuario);
+  //  echo ($idusuario[0]);
+    $this->view->detalleItem($item, $result, $idusuario);
   }
 
   public function create()
@@ -75,7 +84,7 @@ class ItemsController extends SecuredController
 
   public function modify($params){
     $id = ($params[0]);
-    print_r($id);
+//    print_r($id);
     $item = $this->model->getItem($id);
     $this->view->modificarItem($id);
   }
@@ -110,19 +119,22 @@ class ItemsController extends SecuredController
       $this->view->mostrarCrearItems($vendedores);
     }
     else {
-      $rutaTempImagenes = $_FILES['imagen']['tmp_name'];
+      echo "En store del Controller";
+      $rutaTempImagenes = $_FILES['imagenes']['tmp_name'];
       $nombre = $_POST['nombre'];
       $genero = $_POST['genero'];
       $precio = $_POST['precio'];
       $descripcion = $_POST['descripcion'];
       $vendedor = $_POST['vendedor'];
+
       if(isset($_POST['vendedor']) && !empty($_POST['vendedor'])){
-            if($this->sonJPG($_FILES['imagen']['type'])) {
+            if($this->sonJPG($_FILES['imagenes']['type'])) {
                     $this->model->guardarItem($nombre, $genero, $precio, $descripcion, $vendedor, $rutaTempImagenes);
-                    header('Location: '.HOME);
+                    echo "Store Ok. ";
+                    //header('Location: '.HOME);
             }
             else{
-              $this->view->errorCrear("La imagen tiene que ser JPG.", $nombre, $genero, $precio, $descripcion, $vendedor);
+              $this->view->errorCrear("Las imagenes tienen que ser JPG.", $nombre, $genero, $precio, $descripcion, $vendedor);
             }
       }
       else{

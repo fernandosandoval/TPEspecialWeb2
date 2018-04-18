@@ -11,12 +11,10 @@
         <input type="text" class="form-control" id="texto" name="texto" placeholder="Comentario">
       </div>
       <div class="form-group">
-        <label for="fk_id_usuario">Usuario</label>
-        <input type="number" id="fk_id_usuario" name="fk_id_usuario" placeholder="Usuario">
+        <input type="hidden" id="fk_id_usuario" name="fk_id_usuario" value="{$usuario}">
       </div>
       <div class="form-group">
-        <label for="fk_id_item">Juego</label>
-        <input type="number" id="fk_id_item" name="fk_id_item" placeholder="Juego">
+        <input type="hidden" id="fk_id_item" name="fk_id_item" value="{$item['id_item']}">
       </div>
       <div class="form-group">
         <label for="puntaje">Puntaje</label>

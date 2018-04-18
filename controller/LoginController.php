@@ -39,6 +39,9 @@ class LoginController extends Controller
              $this->view->mostrarLogin('Usuario o Password incorrectos');
          }
        }
+       else{
+           $this->view->mostrarLogin('Los campos Email y Password no pueden estar vacíos');
+       }
   }
 
   public function destroy()

@@ -5,8 +5,8 @@
     {/if}
     <form action="guardarItem" method="post" enctype="multipart/form-data">
       <div class="form-group">
-        <label for="imagen">Imagen</label>
-          <input type="file" id="imagen" name="imagen">
+        <label for="imagenes">Imagenes</label>
+          <input type="file" id="imagenes" name="imagenes[]" multiple="multiple">
         </div>
         <div class="form-group">
         <label for="juego">Nombre</label>
@@ -30,7 +30,7 @@
           {foreach from=$vendedores item=vend}
              <option value="{$vend['id_vendedor']}">{$vend['nombre']}</option>
           {/foreach}
-        </select>  
+        </select>
       </div>
       <button type="submit" class="btn btn-default">Agregar</button>
     </form>

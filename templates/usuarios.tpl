@@ -19,8 +19,8 @@
                   <td>{$usuario['nombre']}</td>
                   <td>{$usuario['telefono']}</td>
                   <td>{$usuario['localidad']}</td>
-                  <td><a class="partial" href="modificarUsuario/{$usuario['id_vendedor']}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
-                  <td><a class="partial" href="borrarUsuario/{$usuario['id_vendedor']}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                  <td><a class="partial" href="#" data-target="modificarUsuario/{$usuario['id_vendedor']}"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></a></td>
+                  <td><a class="partial" href="#" data-target="borrarUsuario/{$usuario['id_vendedor']}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
                 </tr>
               {/foreach}
             </tbody>

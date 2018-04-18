@@ -22,6 +22,7 @@
    public function esAdmin($value='')
    {
     $esAdmin=false;
+     
     if(isset($_SESSION['ADMIN'])&& $_SESSION['ADMIN']==1){
          $esAdmin=true;
     }

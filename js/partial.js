@@ -44,7 +44,6 @@ $(document).ready(function(){
       console.log(itemArr);
       let itemSelec = itemArr[1];
       console.log(itemSelec);
-//      debugger;
       $.ajax({
           url: $(this).attr('data-target'),
           type: 'GET',
@@ -89,7 +88,7 @@ $(document).ready(function(){
               $('#tablaComentarios').append(rendered);
             })
             .fail(function() {
-                $('#tablaComentarios').append('<li>Error al cargar los comentarios</li>');
+                $('#tablaComentarios').append('<tr><td>Error al cargar los comentarios</td></tr>');
             });
     }
 
@@ -104,7 +103,8 @@ $(document).ready(function(){
                 $('#tablaComentariosItem').append(rendered);
               })
               .fail(function() {
-                  $('#tablaComentariosItem').append('<li>Error al cargar los comentarios</li>');
+                  $('#tablaComentariosItem').append('<tr><td>Este juego aún no tiene comentarios. Sea el primero en comentar!</td></tr>');
+                  clearInterval(int);
               });
       }
 
@@ -115,24 +115,41 @@ $(document).ready(function(){
           "fk_id_item": $('#fk_id_item').val(),
           "puntaje": $('#puntaje').val()
         };
-        console.log(comentario);
-
-        $.ajax({
-              method: "POST",
-              url: "api/comentarios",
-              data: JSON.stringify(comentario)
-            })
-          .done(function(data) {
-            console.log(data);
-            let rendered = Mustache.render(templateComentario, {data: comentario});
-            console.log(rendered);
-            $('#tablaComentarios').append(rendered);
-            alert('Comentario creado con éxito');
-          })
-          .fail(function(data) {
-              console.log(data);
-              alert('Imposible crear el comentario');
-          });
+        if (comentario.texto === ''){
+          $('tr').remove();
+          $('#tablaComentariosItem').append('<tr><td>El comentario no puede estar vacío</td></tr>');
+          clearInterval(int);
+        }
+           else if (comentario.puntaje === '' ){
+                  $('tr').remove();
+                  $('#tablaComentariosItem').append('<tr><td>El puntaje no puede estar vacío</td></tr>');
+                }
+                else if (comentario.puntaje <= 0 || comentario.puntaje >= 6 ){
+                    $('tr').remove();
+                    $('#tablaComentariosItem').append('<tr><td>El puntaje debe ser un número entre 0 y 5</td></tr>');
+                  }
+                else{
+                    $.ajax({
+                          method: "POST",
+                          url: "api/comentarios",
+                          data: JSON.stringify(comentario)
+                        })
+                      .done(function(data) {
+                        console.log(data);
+                        let rendered = Mustache.render(templateComentario, {data: comentario});
+                        console.log(rendered);
+                        $('#tablaComentariosItem').append(rendered);
+                        alert('Comentario creado con éxito');
+                        cargarComentariosPorItem(comentario.fk_id_item);
+                        int = setInterval(function () {
+                            cargarComentariosPorItem(comentario.fk_id_item);
+                        }, 2000);
+                      })
+                      .fail(function(data) {
+                          console.log(data);
+                          alert('No se ha podido crear el comentario');
+                      });
+                }
       }
 
   function borrarComentario(id_comentario) {
@@ -154,30 +171,34 @@ $(document).ready(function(){
     e.preventDefault();
     cargarComentarios();
     })
-  //
-  // $("#listaC").find(".active").attr("id") , function(e){
-  //     e.preventDefault();
-  //     cargarComentarios();
-  //     })
 
 
-  $(document).on('click','#btnCrearComentario','a.partial' , function(e){
+ $(document).on('click','#btnCrearComentario','a.partial' , function(e){
     e.preventDefault();
     crearComentario();
     })
 
+ $(document).on('click','#btn-SelecVendedor','a.partial' , function(e){
+      e.preventDefault();
+      id = document.formVendedor.idVend.value;
+      console.log(id);
+      $.ajax({
+          url: "itemsPorUsuario/" + id,
+          type: 'GET',
+          success: function(result){
+
+              $("#partialRenderContainer").html(result);
+              }
+        });
+    })
+
  $('body').on('click', 'a.js-borrar', function() {
       event.preventDefault();
-      //debugger;
       let idCom = $(this).data('idcomentario');
         console.log(idCom);
         borrarComentario(idCom);
     });
 
-  // $(document).on('load','#tablaCom','a.partial' , function(e){
-  //   e.preventDefault();
-  //   cargarComentarios();
-  //
 
 
 

@@ -2,7 +2,7 @@
 	include_once 'model/ComentariosModel.php';
 	include_once 'view/ComentariosView.php';
 
-	class ComentariosController extends Controller
+	class ComentariosController extends SecuredController
 	{
 		function __construct()
 		{
@@ -12,8 +12,15 @@
 
 		public function index()
 		{
-			$this->view->showComentarios();
-		}
+			$permiso = $this->esAdmin();
+			if($permiso){
+            $this->view->showComentarios();
+					}
+					else {
+						echo "<h3>Acceso denegado</h3>";
+						echo "<h3>Lo sentimos, usted no tiene permiso para acceder a esta sección</h3>";
+					}
+			}
 
 	}
  ?>

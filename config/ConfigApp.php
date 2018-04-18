@@ -25,6 +25,7 @@ class ConfigApp{
       'logout' => 'LoginController#destroy',
       'registrarUsuario' => 'LoginController#signUp',
       'borrarRegistrado' => 'AdminController#destroy',
+      'modificarRegistrado' => 'AdminController#modify',
       'updateRegistrado' => 'AdminController#update',
       'borrarImagen' => 'AdminController#destroyImage',
       'registrados' => 'AdminController#showRegistrados',

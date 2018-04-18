@@ -25,8 +25,6 @@ class AdminController extends SecuredController
   public function showRegistrados(){
     $permiso = $this->esAdmin();
     if($permiso){
-          // $arrNombre = [];
-          // $arrCamino = [];
           $registrados = $this->model->getRegistrados();
           $imagenesItem = $this->model->getImagenesDeItems();
           $this->view->mostrarRegistrados($registrados,$imagenesItem);
@@ -37,21 +35,21 @@ class AdminController extends SecuredController
         }
   }
 
+
+
   public function update($params)
   {
-    echo "Actualizando permiso";
-    $id_usuario = $params[0];
-    $usuario = $this->model->getRegistrado($id_usuario);
-    var_dump($usuario);
-    echo "Actualizando permiso de usuario";
+    $id_usuario_str = $params[0];
+    $id_usuario = str_split($id_usuario_str,2);
+    $id_u = $id_usuario[0];
+    $usuario = $this->model->getRegistrado($id_u);
     $datoAdmin = $usuario['es_admin'];
-    var_dump($datoAdmin);
     $actualdatoAdmin = ($datoAdmin == 0) ? 1 : 0 ;
-    var_dump($actualdatoAdmin);
-    $this->model->actualizarPermiso($actualdatoAdmin, $id_usuario);
-    header('Location: '.HOME);
-
+    $this->model->actualizarPermiso($actualdatoAdmin, $id_u);
+    echo "El permiso del usuario {$usuario['usuario']} ha sido actualizado con éxito";
+  //  header('Location: '.HOME);
   }
+
 
   public function destroy($params)
   {

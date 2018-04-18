@@ -21,8 +21,8 @@
                   {else}
                      <td>{"Usuario Común"}</td>
                   {/if}
-                  <td><a class="partial" href="updateregistrado/{$registrado['id_usuario']}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
-                  <td><a class="partial" href="borrarRegistrado/{$registrado['id_usuario']}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                  <td><a class="partial" href="#" data-target="updateRegistrado/{$registrado['id_usuario']}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>
+                  <td><a class="partial" href="#" data-target="borrarRegistrado/{$registrado['id_usuario']}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
                 </tr>
               {/foreach}
             </tbody>

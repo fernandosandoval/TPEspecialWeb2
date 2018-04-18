@@ -50,8 +50,9 @@ class UsuariosController extends SecuredController
   }
 
   public function modify($params){
+  //  echo ("entrando a modify");
     $id = ($params[0]);
-    print_r($id);
+  //  print_r($id);
     $item = $this->model->getUsuario($id);
     $this->view->modificarUsuario($id);
   }

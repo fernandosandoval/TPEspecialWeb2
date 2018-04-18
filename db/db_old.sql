@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-04-2018 a las 23:14:40
+-- Tiempo de generación: 15-11-2017 a las 11:20:12
 -- Versión del servidor: 10.1.13-MariaDB
 -- Versión de PHP: 5.6.21
 
@@ -31,20 +31,8 @@ CREATE TABLE `comentario` (
   `texto` varchar(255) NOT NULL,
   `fk_id_usuario` int(10) NOT NULL,
   `fk_id_item` int(10) NOT NULL,
-  `puntaje` int(10) NOT NULL
+  `fk_id_vendedor` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `comentario`
---
-
-INSERT INTO `comentario` (`id_comentario`, `texto`, `fk_id_usuario`, `fk_id_item`, `puntaje`) VALUES
-(1, 'Muy bueno. Me gusto', 1, 1, 4),
-(2, 'Muy buena atencion. Llego todo a tiempo', 2, 1, 5),
-(3, 'No me gusto. Esperaba otra cosa. Es mas de lo mismo', 3, 4, 3),
-(4, 'Prueba desde la API', 1, 1, 5),
-(6, 'asdfhasbfhasbf', 2, 4, 4),
-(7, 'wqwqewqtewqe', 3, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -68,7 +56,7 @@ INSERT INTO `imagen` (`id_imagen`, `path`, `fk_id_item`) VALUES
 (3, 'imagenes/mk-3.jpg', 1),
 (4, 'imagenes/uncharted-1.jpg', 2),
 (5, 'imagenes/uncharted-2.jpg', 2),
-(7, 'imagenes/uncharted-3.jpg', 2);
+(6, 'imagenes/uncharted-3.jpg', 2);
 
 -- --------------------------------------------------------
 
@@ -117,10 +105,9 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `usuario`, `password`, `es_admin`) VALUES
-(1, 'fer@gmail.com', '$2y$10$tJmcy7y1Gp7tqqHber894Oup.9fVGA4yYEDJzNPloveSIYPaMNNom', 1),
+(1, 'fer', '$2y$10$tJmcy7y1Gp7tqqHber894Oup.9fVGA4yYEDJzNPloveSIYPaMNNom', 1),
 (2, 'pepe@gmail.com', '$2y$10$FAS9G24911b6fbw/nlXJMe2NC8VrrZ44ld2gPTLaJwPvp6BOCLT/m', 0),
-(3, 'lalo@gmail.com', '$2y$10$9wFp2lZsSN.o0EjLedDePeNS/wc68C9RjQY3.y1zPc17DkSZifF/K', 0),
-(10, 'cacho@gmail.com', '$2y$10$g4ei21D84QgcB6jm7/k9huEZO3TRN7U1MJF54ESOFgGUjc6GAJQZu', 0);
+(3, 'lalo@gmail.com', '$2y$10$9wFp2lZsSN.o0EjLedDePeNS/wc68C9RjQY3.y1zPc17DkSZifF/K', 0);
 
 -- --------------------------------------------------------
 
@@ -193,12 +180,12 @@ ALTER TABLE `vendedor`
 -- AUTO_INCREMENT de la tabla `comentario`
 --
 ALTER TABLE `comentario`
-  MODIFY `id_comentario` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_comentario` int(10) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `imagen`
 --
 ALTER TABLE `imagen`
-  MODIFY `id_imagen` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_imagen` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `item`
 --
@@ -208,7 +195,7 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `vendedor`
 --

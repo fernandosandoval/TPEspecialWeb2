@@ -13,7 +13,7 @@ class AdminModel extends Model
   }
 
   function getRegistrado($id_usuario){
-    $sentencia = $this->db->prepare('SELECT * FROM usuario WHERE id_vendedor = ?');
+    $sentencia = $this->db->prepare('SELECT * FROM usuario WHERE id_usuario=?');
     $sentencia->execute([$id_usuario]);
     return $sentencia->fetch(PDO::FETCH_ASSOC);
   }
@@ -24,7 +24,7 @@ class AdminModel extends Model
   }
 
   function actualizarPermiso($es_admin, $id_usuario){
-    $sentencia = $this->db->prepare('UPDATE vendedor SET es_admin=? WHERE id_usuario=?');
+    $sentencia = $this->db->prepare('UPDATE usuario SET es_admin=? WHERE id_usuario=?');
     $sentencia->execute([$es_admin, $id_usuario]);
   }
 
@@ -38,6 +38,15 @@ class AdminModel extends Model
   function borrarImagen($id_imagen){
     $sentencia = $this->db->prepare('DELETE FROM imagen WHERE id_imagen=?');
     $sentencia->execute([$id_imagen]);
+  }
+
+  function obtenerId($email){
+       $sentencia = $this->db->prepare('SELECT id_usuario FROM usuario WHERE usuario=?');
+       $sentencia->execute([$email]);
+       $arrid = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+       $arrUsuario = $arrid[0];
+       $id = $arrUsuario[id_usuario];
+       return $id;
   }
 
 }

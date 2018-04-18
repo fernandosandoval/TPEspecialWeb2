@@ -11,9 +11,10 @@ class ItemsView extends View
       $this->smarty->display('templates/items.tpl');
   }
 
-  function detalleItem($item, $imagenes){
+  function detalleItem($item, $imagenes, $usuario){
       $this->smarty->assign('item', $item);
       $this->smarty->assign('imagenes', $imagenes);
+      $this->smarty->assign('usuario', $usuario);
       $this->smarty->display('templates/detalleItem.tpl');
   }
 

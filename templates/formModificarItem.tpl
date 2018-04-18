@@ -6,9 +6,8 @@
     {if isset($error) }
       <div class="alert alert-danger" role="alert">{$error}</div>
     {/if}
-    <!-- <p> Estas modificando el item número {($id)}</p> -->
     <form action="updateItem" method="post">
-      <label for="id">Estas por modificar el item: "{$id}"</label><br>
+      <label for="id">Estas por modificar el item con id número: {$id}</label><br>
         <input type="hidden" name="id" class="form-control" value="{$id}" >
       <div class="form-group">
         <label for="juego">Nombre</label>
