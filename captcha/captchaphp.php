@@ -3,7 +3,6 @@
 session_start(); # iniciamos la sesion
 
 $numero = rand(1000,9999); # generamos un numero aleatorio
-
 $_SESSION['codigo'] = $numero; # guardamos el numero en una variable de sesión
 header("Content-type: image/png");
 
@@ -21,4 +20,9 @@ imagestring($im, 12, 20, 5, $_SESSION['codigo'], $texto);
 
 # se crea la imagen, la imagen será formato PNG
 imagepng($im);
+
+//
+// public function valor(){
+//   return ($numero);
+// }
 ?>

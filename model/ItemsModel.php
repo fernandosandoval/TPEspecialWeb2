@@ -37,15 +37,13 @@ class ItemsModel extends Model
   }
 
   private function subirImagenes($imagenes){
-    var_dump("Subiendo imagenes");
+    // var_dump("Subiendo imagenes");
     $rutas = [];
     foreach ($imagenes as $imagen) {
       $destino_final = 'imagenes/' . uniqid() . '.jpg';
       move_uploaded_file($imagen, $destino_final);
       $rutas[] = $destino_final;
     }
-    echo "vardump de rutas: ";
-    var_dump($rutas);
     return $rutas;
   }
 
@@ -59,35 +57,25 @@ class ItemsModel extends Model
   }
 
   function guardarItem($nombre, $genero, $precio, $descripcion, $vendedor, $imagenes){
-      echo(' Guardando item ');
-      echo($nombre);
+      // echo(' Guardando item ');
+      // echo($nombre);
       $sentencia = $this->db->prepare('INSERT INTO item (nombre, genero, precio, descripcion, fk_id_vendedor) VALUES(?,?,?,?,?)');
 
       $sentencia->execute([$nombre, $genero, $precio, $descripcion, $vendedor]);
       $id_item = $this->db->lastInsertId();
-      echo "id item:";
-      echo($id_item);
+      // echo "id item:";
+      // echo($id_item);
       $rutas = $this->subirImagenes($imagenes);
-      echo "rutas: ";
-      echo($rutas[0]);
+      // echo "rutas: ";
+      // echo($rutas[0]);
       $sentencia_imagenes = $this->db->prepare("INSERT INTO imagen (camino, fk_id_item) VALUES (?,?)");
       foreach ($rutas as $camino){
-        echo "ruta: ";
-        echo ($camino);
+        // echo "ruta: ";
+        // echo ($camino);
         $sentencia_imagenes->execute([$camino, $id_item]);
       }
 
   }
-
-  // function guardarImagenEnItem($imagen, $fk_id_item){
-  //     $destino_final = 'imagenes/' . uniqid() . '.jpg';
-  //     move_uploaded_file($imagen, $destino_final);
-  //     $sentencia = $this->db->prepare('INSERT INTO imagen (path, fk_id_item) VALUES(?,?)');
-  //     $sentencia->execute([$destino_final, $fk_id_item]);
-  //     $id = $this->db->lastInsertId();
-  //     return $this->getImagen($id);
-  // }
-
 
   function actualizarItem($nombre, $genero, $precio, $descripcion, $vendedor, $id_item){
     $sentencia = $this->db->prepare('UPDATE item SET nombre=?, genero=?, precio=?, descripcion=?, fk_id_vendedor=? WHERE id_item=?');

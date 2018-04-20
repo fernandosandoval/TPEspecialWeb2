@@ -113,8 +113,9 @@ $(document).ready(function(){
           "texto": $('#texto').val(),
           "fk_id_usuario": $('#fk_id_usuario').val(),
           "fk_id_item": $('#fk_id_item').val(),
-          "puntaje": $('#puntaje').val()
+          "puntaje": $('#puntaje').val(),
         };
+        debugger;
         if (comentario.texto === ''){
           $('tr').remove();
           $('#tablaComentariosItem').append('<tr><td>El comentario no puede estar vacío</td></tr>');
@@ -175,7 +176,27 @@ $(document).ready(function(){
 
  $(document).on('click','#btnCrearComentario','a.partial' , function(e){
     e.preventDefault();
-    crearComentario();
+    $.ajax({
+        url: 'captcha/Verificar.php',
+        type: 'POST',
+        //dataType: 'text',
+        data: {"valor": $('#captcha').val()}
+      })
+      .success(function(data) {
+         if (data == 1){
+            crearComentario();
+         }
+         else{
+            alert ("El número ingresado no es correcto. Ingrese nuevamente el número de la imagen");
+         }
+       })
+      .error(function() {
+           alert("Error verificando captcha");
+      })
+      .always(function() {
+        //console.log("complete");
+      });
+
     })
 
  $(document).on('click','#btn-SelecVendedor','a.partial' , function(e){

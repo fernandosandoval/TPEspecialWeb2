@@ -20,7 +20,11 @@
         <label for="puntaje">Puntaje</label>
         <input type="number" id="puntaje" name="puntaje" min="1" max="5">
       </div>
-
+      <div class="form-group">
+        <img src="captcha/captchaphp.php"></br>
+        <label for="captcha">Ingrese el número que aparece en la imagen</label>
+        <input type="text" id="captcha" name="captcha">
+      </div>
       <button id="btnCrearComentario" type="submit" class="btn btn-default">Crear Comentario</button>
     </form>
   </div>

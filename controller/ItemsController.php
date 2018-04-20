@@ -4,7 +4,7 @@ include_once('view/ItemsView.php');
 include_once('model/UsuariosModel.php');
 include_once('controller/SecuredController.php');
 include_once('controller/AdminController.php');
-
+//include_once('captcha/captchaphp.php');
 
 /**
  *
@@ -131,7 +131,7 @@ class ItemsController extends SecuredController
             if($this->sonJPG($_FILES['imagenes']['type'])) {
                     $this->model->guardarItem($nombre, $genero, $precio, $descripcion, $vendedor, $rutaTempImagenes);
                     echo "Store Ok. ";
-                    //header('Location: '.HOME);
+                    header('Location: '.TABLAITEMS);
             }
             else{
               $this->view->errorCrear("Las imagenes tienen que ser JPG.", $nombre, $genero, $precio, $descripcion, $vendedor);

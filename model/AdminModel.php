@@ -45,7 +45,8 @@ class AdminModel extends Model
        $sentencia->execute([$email]);
        $arrid = $sentencia->fetchAll(PDO::FETCH_ASSOC);
        $arrUsuario = $arrid[0];
-       $id = $arrUsuario[id_usuario];
+       $id_usuario = "id_usuario";
+       $id = $arrUsuario[$id_usuario];
        return $id;
   }
 
