@@ -55,7 +55,8 @@ class AdminController extends SecuredController
   {
     $id_usuario = $params[0];
     $this->model->borrarRegistrado($id_usuario);
-    header('Location: '.HOME);
+    echo "El usuario ha sido eliminado";
+//    header('Location: '.HOME);
 
   }
 
@@ -63,7 +64,8 @@ class AdminController extends SecuredController
   {
     $id_imagen = $params[0];
     $this->model->borrarImagen($id_imagen);
-    header('Location: '.HOME);
+    echo "La imagen ha sido eliminada";
+    //header('Location: '.HOME);
 
   }
 

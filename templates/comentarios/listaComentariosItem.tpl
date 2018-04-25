@@ -11,7 +11,9 @@
            		<table id="tablaComentariosItem" class="table table-striped">
 
            		</table>
+              {if $usuario != 0}
            		{include file="templates/formCrearComentario.tpl"}
+              {/if}
            	</div>
            </div>
 

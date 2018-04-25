@@ -18,10 +18,11 @@ class ItemsView extends View
       $this->smarty->display('templates/detalleItem.tpl');
   }
 
-  function mostrarIndex(){
+  function mostrarIndex($sesion){
     $titulo = "Juegos y Consolas";
     $smarty = new Smarty();
     $smarty->assign('titulo', $titulo);
+    $smarty->assign('sesion', $sesion);
     $smarty->display('templates/index.tpl');
   }
 
@@ -43,9 +44,10 @@ class ItemsView extends View
     $this->smarty->display('templates/elegirVendedor.tpl');
   }
 
-  function modificarItem($id){
+  function modificarItem($id,$nomjuego){
     $this->asignarItemForm();
     $this->smarty->assign('id', $id);
+    $this->smarty->assign('nomjuego', $nomjuego);
     $this->smarty->display('templates/formModificarItem.tpl');
   }
 

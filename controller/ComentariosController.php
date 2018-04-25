@@ -12,15 +12,8 @@
 
 		public function index()
 		{
-			$permiso = $this->esAdmin();
-			if($permiso){
             $this->view->showComentarios();
-					}
-					else {
-						echo "<h3>Acceso denegado</h3>";
-						echo "<h3>Lo sentimos, usted no tiene permiso para acceder a esta sección</h3>";
-					}
-			}
+		}
 
 	}
  ?>

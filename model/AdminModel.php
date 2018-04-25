@@ -29,7 +29,7 @@ class AdminModel extends Model
   }
 
   function getImagenesdeItems(){
-       $sentencia_imagenes = $this->db->prepare('SELECT i.nombre as nombre, im.path as camino, im.id_imagen as id_imagen FROM item i, imagen im WHERE im.fk_id_item = i.id_item');
+       $sentencia_imagenes = $this->db->prepare('SELECT i.nombre as nombre, im.camino as camino, im.id_imagen as id_imagen FROM item i, imagen im WHERE im.fk_id_item = i.id_item');
        $sentencia_imagenes->execute();
        $imagenes = $sentencia_imagenes->fetchAll(PDO::FETCH_ASSOC);
        return $imagenes;

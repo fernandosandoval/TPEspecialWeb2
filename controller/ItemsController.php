@@ -32,11 +32,25 @@ class ItemsController extends SecuredController
 
   public function index()
   {
-    $this->view->mostrarIndex();
+    if($this->esAdmin())
+      $sesion = 'ADMIN';
+      elseif ($this->esUsuario())
+        $sesion = 'USER';
+        else {
+          $sesion = 'GUEST';
+        }
+    $this->view->mostrarIndex($sesion);
   }
 
   public function home()
   {
+    if($this->esAdmin())
+      $sesion = 'ADMIN';
+      elseif ($this->esUsuario())
+        $sesion = 'USER';
+        else {
+          $sesion = 'GUEST';
+        }
     $this->view->mostrarHome();
   }
 
@@ -69,9 +83,13 @@ class ItemsController extends SecuredController
        $camino = $elem['camino'];
        array_push($result, $camino);
     }
-    $usuario = $_SESSION['USER'];
-  //  echo "Ud es el usuario $usuario";
-    $idusuario = $this->modelA->obtenerId($usuario);
+    if (isset($_SESSION['USER'])){
+      $usuario = $_SESSION['USER'];
+      $idusuario = $this->modelA->obtenerId($usuario);
+    }
+    else {
+      $idusuario = 0;
+    }
   //  echo ($idusuario[0]);
     $this->view->detalleItem($item, $result, $idusuario);
   }
@@ -86,7 +104,8 @@ class ItemsController extends SecuredController
     $id = ($params[0]);
 //    print_r($id);
     $item = $this->model->getItem($id);
-    $this->view->modificarItem($id);
+    $nomjuego = $item['nombre'];
+    $this->view->modificarItem($id, $nomjuego);
   }
 
   public function update()
@@ -104,7 +123,7 @@ class ItemsController extends SecuredController
       $vendedor = $_POST['vendedor'];
       if(isset($_POST['vendedor']) && !empty($_POST['vendedor'])){
           $this->model->actualizarItem($nombre, $genero, $precio, $descripcion, $vendedor, $id);
-          header('Location: '.HOME);
+          //header('Location: '.HOME);
           }
       else
          $this->view->errorModificar("El vendedor es requerido", $nombre, $genero, $precio, $descripcion, $vendedor);
@@ -119,7 +138,7 @@ class ItemsController extends SecuredController
       $this->view->mostrarCrearItems($vendedores);
     }
     else {
-      echo "En store del Controller";
+      //echo "En store del Controller";
       $rutaTempImagenes = $_FILES['imagenes']['tmp_name'];
       $nombre = $_POST['nombre'];
       $genero = $_POST['genero'];
@@ -147,7 +166,8 @@ class ItemsController extends SecuredController
   {
     $id_item = $params[0];
     $this->model->borrarItem($id_item);
-//    header('Location: '.TABLAITEMS);
+  //  echo "El juego ha sido eliminado correctamente";
+    header('Location: '.TABLAITEMS);
   }
 
 }

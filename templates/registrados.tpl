@@ -34,15 +34,17 @@
               <thead>
                 <tr>
                   <th>Juego</th>
-                  <th>Nombre del archivo de la imagen</th>
+                  <th>Imagen del juego</th>
                 </tr>
               </thead>
               <tbody>
                 {foreach from=$imagenesItem item=imagen}
                   <tr>
                     <td>{$imagen['nombre']}</td>
-                    <td>{$imagen['camino']}</td>
-                    <td><a class="partial" href="borrarImagen/{$imagen['id_imagen']}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
+                    <!-- <li class="list-group-item">Imagen: <img src="{$imagen}"></li> -->
+
+                    <td><img src="{$imagen['camino']}"</td>
+                    <td><a class="partial" href="#" data-target="borrarImagen/{$imagen['id_imagen']}"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a></td>
                     <!-- <li class="list-group-item">Imagen: <img src="{$imagen[1]}"></li> -->
                     <!-- <td>{$imagen['id_imagen']}</td> -->
                     <!-- <td><a class="partial" href="agregarImagen/{$imagen['id_item']}"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></td>

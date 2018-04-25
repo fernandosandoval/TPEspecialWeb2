@@ -13,12 +13,14 @@ class LoginController extends Controller
 
   public function index()
   {
-    $this->view->mostrarLogin();
+    $sesion = 'LOGIN';
+    $this->view->mostrarLogin($sesion);
   }
 
   public function relogin()
   {
-    $this->view->mostrarRelogin();
+    $sesion = 'LOGIN';
+    $this->view->mostrarRelogin($sesion);
   }
 
   public function verify(){
@@ -32,6 +34,11 @@ class LoginController extends Controller
              $_SESSION['USER'] = $userName;
              $_SESSION['ADMIN']= $user[0]['es_admin'];
              $_SESSION['LAST_ACTIVITY'] = time();
+             if ($_SESSION['ADMIN'] == 0)
+                 $sesion = 'USER';
+                 else {
+                   $sesion = 'ADMIN';
+                 }
              header('Location: '.HOME);
              die();
          }
@@ -42,6 +49,17 @@ class LoginController extends Controller
        else{
            $this->view->mostrarLogin('Los campos Email y Password no pueden estar vacíos');
        }
+  }
+
+  public function initGuest(){
+    $userName = $_POST['usuarioI'];
+    session_start();
+    $_SESSION['GUEST'] = $userName;
+    $_SESSION['ADMIN']= 0;
+    $_SESSION['LAST_ACTIVITY'] = time();
+    $sesion = 'GUEST';
+    header('Location: '.HOME);
+    die();
   }
 
   public function destroy()
@@ -68,6 +86,7 @@ class LoginController extends Controller
                        $_SESSION['USER'] = $userName;
                        $_SESSION['ADMIN'] = $user[0]['es_admin'];
                        $_SESSION['LAST_ACTIVITY'] = time();
+
                        header('Location: '.HOME);
                        die();
                      }

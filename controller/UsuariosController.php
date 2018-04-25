@@ -64,7 +64,6 @@ class UsuariosController extends SecuredController
       $this->view->modificarUsuario();
     }
     else {
-      //$rutaTempImagen = $_FILES['imagen']['tmp_name'];
       $id = $_POST['id'];
       $nombre = $_POST['nombre'];
       $telefono = $_POST['telefono'];

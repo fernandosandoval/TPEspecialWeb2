@@ -35,5 +35,12 @@
                <div class="alert alert-danger" role="alert">{$error}</div>
              {/if}
              <button type="submit" class="btn btn-default">Crear Usuario</button>
+           </form>
+           <form action="entradaInvitado" method="post">
+             <div class="form-group">
+               <input type="hidden" id="usuarioI" name="usuarioI" value="Invitado">
+             </div>
+           <button type="submit" id="botoninvitado" class="btn btn-primary">Entrar como invitado</button>
+           </form>
          </div>
        </div>

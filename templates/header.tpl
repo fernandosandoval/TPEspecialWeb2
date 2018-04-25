@@ -29,33 +29,8 @@
              <!-- <a class="navbar-brand" href="home">Juegos y Consolas</a> -->
           </div> <!-- navbar-header-->
           <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="container-navbar">
-              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                 <ul class="nav navbar-nav">
-                     <li id="home"><a href="#" data-target="home" class="partial">Home</a></li>
-                     <li id="items"><a href="#" data-target="items" class="partial">Todos los Juegos</a></li>
-                     <li id="elegirU"><a href="#" data-target="seleccionarVendedor" class="partial">Juegos por Vendedor</a></li>
-                     <li id="usuarios"><a href="#" data-target="usuarios" class="partial">Lista de Vendedores</a></li>
-                     <li id="agregarI"><a href="#" data-target="guardarItem" class="partial">Agregar Juego</a></li>
-                     <li id="agregarU"><a href="#" data-target="guardarUsuario" class="partial">Agregar Vendedor</a></li>
-                     <li id="listaC"><a href="#" data-target="comentarios" class="partialComm">Comentarios</a></li>
-                     <li id="admin"><a href="#" data-target="registrados" class="partial">Administrar datos</a></li>
-                     <li id="salir"><a href="#" data-target="logout" class="partial">Salir</a></li>
-                    </ul>
-
-                    <!-- <ul class="nav navbar-nav">
-                        <li id="home"><a data-target="home" class="partial">Home</a></li>
-                        <li id="items"><a href="items" class="partial">Todos los Juegos</a></li>
-                        <li id="elegirU"><a href="seleccionarVendedor" class="partial">Juegos por Vendedor</a></li>
-                        <li id="usuarios"><a href="usuarios" class="partial">Lista de Vendedores</a></li>
-                        <li id="agregarI"><a href="guardarItem" class="partial">Agregar Juego</a></li>
-                        <li id="agregarU"><a href="guardarUsuario" class="partial">Agregar Vendedor</a></li>
-                        <li id="listaC"><a href="comentarios" class="partial">Comentarios</a></li>
-                        <li id="admin"><a href="registrados" class="partial">Administrar datos</a></li>
-                        <li id="salir"><a href="logout" class="partial">Salir</a></li>
-                       </ul>
-                        -->
-                   </div><!-- /.navbar-collapse -->
-                  </div> <!-- /container navbar -->
+          {if $sesion != 'LOGIN'}
+            {include file="templates/navbar.tpl"}
+          {/if}
                  </div><!-- /.container-fluid -->
                </nav>

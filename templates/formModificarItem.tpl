@@ -7,7 +7,7 @@
       <div class="alert alert-danger" role="alert">{$error}</div>
     {/if}
     <form action="updateItem" method="post">
-      <label for="id">Estas por modificar el item con id número: {$id}</label><br>
+      <label for="id">Estas por modificar el juego {$nomjuego}</label><br>
         <input type="hidden" name="id" class="form-control" value="{$id}" >
       <div class="form-group">
         <label for="juego">Nombre</label>

@@ -19,6 +19,7 @@ class ConfigApp{
       'borrarUsuario' => 'UsuariosController#destroy',
       'modificarUsuario' => 'UsuariosController#modify',
       'updateUsuario' => 'UsuariosController#update',
+      'entradaInvitado' => 'LoginController#initGuest',
       'login' => 'LoginController#index',
       'relogin' => 'LoginController#relogin',
       'verificarUsuario' => 'LoginController#verify',

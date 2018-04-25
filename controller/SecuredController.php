@@ -6,7 +6,7 @@
     function __construct()
     {
       session_start();
-      if(isset($_SESSION['USER'])){
+      if(isset($_SESSION['USER']) || isset($_SESSION['ADMIN']) || isset($_SESSION['GUEST'])){
         if (time() - $_SESSION['LAST_ACTIVITY'] > 300000000) {
           header('Location: '.LOGOUT);
           die();
@@ -19,17 +19,17 @@
       }
    }
 
-   public function esAdmin($value='')
+   public function esAdmin()
    {
     $esAdmin=false;
-     
+
     if(isset($_SESSION['ADMIN'])&& $_SESSION['ADMIN']==1){
          $esAdmin=true;
     }
     return $esAdmin;
    }
 
-  public function esUsuario($value='')
+  public function esUsuario()
   {
     $esUsuario=false;
     if(isset($_SESSION['USER'])){
@@ -38,7 +38,7 @@
     return $esUsuario;
   }
 
-  public function esInvitado($value='')
+  public function esInvitado()
   {
     $esInvitado=false;
     if(isset($_SESSION['GUEST'])){
